@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_spec.c                                      :+:      :+:    :+:   */
+/*   convers_d.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/24 17:28:14 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/24 18:41:53 by jherrald         ###   ########.fr       */
+/*   Created: 2020/02/24 17:53:37 by jherrald          #+#    #+#             */
+/*   Updated: 2020/02/24 18:36:00 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	parser_spec(const char *format, size_t len, t_f *f, va_list arg)
+void	fill_put(t_f *f)
 {
-	if (format[len] == 'd')
-		convers_d(arg, f);
+	
+}
+
+
+void	convers_d(va_list arg, t_f *f)
+{
+	
 
 }
+

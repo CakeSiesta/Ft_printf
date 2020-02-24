@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:10:12 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/24 17:12:34 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/02/24 18:50:32 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef long long unsigned	t_llu;
 ** Flag activate
 */
 
-typedef struct	s_flag
+typedef struct	s_f
 {
 	int			zero;
 	int			minus;
@@ -34,33 +34,21 @@ typedef struct	s_flag
 	int			precision;
 	int			percent;
 	int			none;
-}				t_flag;
+}				t_f;
 
-int				ft_printf(char *format, ...);
+typedef struct	s_put
+{
+	int			pad_zero;
+	int			pad_width;
+	int			pad_precision;
+	int			pad_minus;
+	int			neg;
+}				t_put;
 
-int				ft_convert_str(va_list arg, t_pos *pos,
-						t_flag *flag);
-
-char			*ft_convert_int(va_list ap, t_pos *pos,
-						t_flag *flag);
-
-char			*ft_convert_hex(va_list arg, t_pos *pos,
-						t_flag *flag, char *format);
-
-int				ft_convert_char(va_list arg, t_pos *pos,
-						t_flag *flag);
-
-char			*ft_convert_usint(va_list arg, t_pos *pos,
-						t_flag *flag);
-
-char			*ft_convert_ptr(va_list arg, t_pos *pos,
-						t_flag *flag);
-
-size_t			parser(t_flag *f, char *str, va_list arg);
-
-size_t			size_percent(const char *str);
-
-char			*pad_maker(char c, size_t len);
-
+int				ft_printf(const char *format, ...);
 int				ft_atoilen(const char *str, size_t *len);
+void			fill_put(t_f *f);
+void			convers_d(va_list arg, t_f *f);
+void			parser_spec(const char *format, size_t len, t_f *f, va_list arg);
+size_t			parser(t_f *f, const char *str, va_list arg);
 #endif

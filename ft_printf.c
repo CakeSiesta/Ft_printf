@@ -6,49 +6,41 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:02:35 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/24 17:28:43 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/24 18:51:04 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_printf(char *format, ...)
+int			ft_printf(const char *format, ...)
 {
-	size_t		i;
-	size_t		j;
-	t_flag		flag;
-	int			nb;
+	size_t		x;
+	size_t		len;
+	t_f			f;
 	va_list		arg;
 
-	i = 0;
-	j = 0;
+	x = 0;
 	va_start(arg, format);
-	while (format[i])
+	while (format[x])
 	{
-		if (format[i] == '%')
+		if (format[x] == '%')
 		{
-			len = size_percent(format);
-			parser(&flag, &format[i + 1], arg);
-			if (format[len + i - 1] == 's')
-				ft_convert_str(arg, &flag);
-			if (format[len + i - 1] == 'c' || format[len + i - 1] == '%')
-				ft_convert_char(arg, &flag);
-			if (format[len + i - 1] == 'd' || format[len + i - 1] == 'i')
-				ft_convert_int(arg, &flag);
-			if (format[len + i - 1] == 'u')
-				ft_convert_usint(arg, &flag);
-			if (format[len + i - 1] == 'p')
-				ft_convert_ptr(arg, &flag);
-			if (format[len + i - 1] == 'x' || format[len + i - 1] == 'X')
-				ft_convert_hex(arg, &flag, format);
+			len = parser(&f, &format[x + 1], arg);
+			parser_spec(&format[x + 1], x, &f, arg);
 		}
 		else
-			write(1, &format[i++], 1);
+			write(1, &format[x++], 1);
 	}
 	va_end(arg);
-	return (ft_strlen(buffer));
+	return (0);
 }
-coucou
+
+int main ()
+{
+	ft_printf("coucou");
+	return (0);
+}
+
 //
 ////int		main(void)
 ////{

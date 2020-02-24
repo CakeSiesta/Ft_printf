@@ -6,20 +6,20 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:04:54 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/24 17:06:13 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/02/24 18:50:57 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		struc_init(t_flag *flag)
+void		struc_init(t_f *f)
 {
-	flag->zero = 0;
-	flag->minus = 0;
-	flag->width = 0;
-	flag->precision = -1;
-	flag->percent = 0;
-	flag->none = 0;
+	f->zero = 0;
+	f->minus = 0;
+	f->width = 0;
+	f->precision = -1;
+	f->percent = 0;
+	f->none = 0;
 }
 
 size_t		size_percent(const char *str)
@@ -39,31 +39,31 @@ size_t		size_percent(const char *str)
 	return (j);
 }
 
-size_t	parser(t_flag *f, char *str, va_list arg)
+size_t	parser(t_f *f, const char *str, va_list arg)
 {
-	size_t	i;
+	size_t	x;
 	char	*specs;
 
-	i = 0;
+	x = 0;
 	specs = ft_strdup("scdiupxX%");
 	struc_init(f);
-	if (ft_isalpha(str[i]) == 0)
+	if (ft_isalpha(str[x]) == 0)
 	{
-		while (str[i] == '0')
+		while (str[x] == '0')
 		{
 			f->zero = 1;
-			i++;
+			x++;
 		}
-		while (str[i] == '-')
+		while (str[x] == '-')
 		{
 			f->minus = 1;
-			i++;
+			x++;
 		}
-		while (str[i] == '0')
-			i++;
-		if (str[i] == '*' || (str[i] >= '1' && str[i] <= '9'))
+		while (str[x] == '0')
+			x++;
+		if (str[x] == '*' || (str[x] >= '1' && str[x] <= '9'))
 		{
-			if (str[i] == '*')
+			if (str[x] == '*')
 			{
 				f->width = va_arg(arg, int);
 				if (f->width < 0)
@@ -71,30 +71,30 @@ size_t	parser(t_flag *f, char *str, va_list arg)
 					f->minus = 1;
 					f->width = -f->width;
 				}
-				i++;
+				x++;
 			}
 			else
-				f->width = ft_atoilen(&str[i], &i);
+				f->width = ft_atoilen(&str[x], &x);
 		}
-		if (str[i++] == '.')
+		if (str[x++] == '.')
 		{
-			if (str[i] == '*')
+			if (str[x] == '*')
 			{
 				f->precision = va_arg(arg, int);
-				i++;
+				x++;
 			}
 			else
-				f->precision = ft_atoilen(&str[i], &i);
+				f->precision = ft_atoilen(&str[x], &x);
 			if (f->precision != -1 || f->minus != 0)
 				f->zero = 0;
 		}
 	}
-	if (str[i] == '%')
+	if (str[x] == '%')
 		f->percent = 1;
 	if (f->precision < -1)
 		f->precision = -1;
-	if (ft_check_char(specs, str[i]) == 0)
+	if (ft_check_char(specs, str[x]) == 0)
 		f->none = 1;
 	free(specs);
-	return (i);
+	return (x);
 }

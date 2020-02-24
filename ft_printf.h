@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:10:12 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/24 20:19:03 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/02/24 22:19:15 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ typedef struct	s_f
 	int			percent;
 	int			none;
 }				t_f;
+
+/*
+** Copy the amounts of zeros or spaces in these variables to add them
+** in the buffer
+*/
 
 typedef struct	s_put
 {

@@ -6,7 +6,7 @@
 #    By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/24 17:20:50 by mkravetz          #+#    #+#              #
-#    Updated: 2020/02/24 17:21:17 by mkravetz         ###   ########.fr        #
+#    Updated: 2020/02/24 17:31:07 by mkravetz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME = libftprintf.a
 
 LIBFT_P = libft/
 
-SRC = ft_printf.c convert_int.c convert_hex.c convert_str.c convert_char.c convert_usint.c parser.c convert_ptr.c utils.c ft_printfspecs.c
+SRC = ft_printf.c convert_int.c convert_hex.c convert_str.c convert_char.c convert_usint.c parser.c convert_ptr.c utils.c ft_printfspecs.c parser_spec.c
 
 OBJ = $(SRC:.c=.o)
 	INCLUDE = ft_printf.h

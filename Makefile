@@ -6,7 +6,7 @@
 #    By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/24 17:20:50 by mkravetz          #+#    #+#              #
-#    Updated: 2020/02/24 20:01:24 by jherrald         ###   ########.fr        #
+#    Updated: 2020/02/24 21:24:45 by jherrald         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME = libftprintf.a
 
 LIBFT_P = libft/
 
-SRC = ft_printf.c parser_spec.c convers_d.c parser.c ft_atoilen.c
+SRC = ft_printf.c parser_spec.c convers_d.c parser.c utils.c
 
 
 OBJ = $(SRC:.c=.o)

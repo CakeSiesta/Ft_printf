@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:02:35 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/24 17:17:26 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/02/24 17:28:43 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int			ft_printf(char *format, ...)
 	va_end(arg);
 	return (ft_strlen(buffer));
 }
+coucou
 //
 ////int		main(void)
 ////{

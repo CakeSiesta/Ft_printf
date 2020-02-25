@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:28:14 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/25 21:58:06 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/02/25 22:36:30 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void	parser_spec(const char *format, size_t len, t_f *f, va_list arg)
 {
-	printf("len in parser is[%zu]\n", len);
-	printf("char is [%c]\n", format[len - 1]);
+	t_put	*put;
+	
+	printf("char is [%c]\n", format[len]);
 	if (format[len] == 'd' || format[len] == 'i')
-		convers_d(arg, f);
+		convers_d(arg, f, put);
 
 }

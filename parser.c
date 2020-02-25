@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:04:54 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/25 21:58:01 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/02/25 22:26:07 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,9 @@ size_t	parser(t_f *f, const char *str, va_list arg)
 			else
 				f->width = ft_atoilen(&str[x], &x);
 		}
-		if (str[x++] == '.')
+		if (str[x] == '.')
 		{
+			x++;
 			if (str[x] == '*')
 			{
 				f->precision = va_arg(arg, int);
@@ -90,10 +91,7 @@ size_t	parser(t_f *f, const char *str, va_list arg)
 	if (f->precision < -1)
 		f->precision = -1;
 	if (ft_check_char(specs, str[x]) == 0)
-	{
-		printf("\x1b[35m""Hello everyone\n""\x1b[0m");
 		f->none = 1;
-	}
 	free(specs);
 //	if (!f->minus && !f->zero && !f->width && f->precision == -1 && !f->percent)
 //		x++;
@@ -102,5 +100,6 @@ size_t	parser(t_f *f, const char *str, va_list arg)
 	printf("                precision is [%d]\n", f->precision);
 	printf("                minus is [%d]\n", f->minus);
 	printf("                zero is [%d]\n\n", f->zero);
+	printf("x is ::%zu\n", x);
 	return (x);
 }

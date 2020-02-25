@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:04:54 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/25 20:46:29 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/25 21:58:01 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,13 @@ size_t	parser(t_f *f, const char *str, va_list arg)
 	if (f->precision < -1)
 		f->precision = -1;
 	if (ft_check_char(specs, str[x]) == 0)
+	{
+		printf("\x1b[35m""Hello everyone\n""\x1b[0m");
 		f->none = 1;
+	}
 	free(specs);
-	if (!f->minus && !f->zero && !f->width && f->precision == -1 && !f->percent)
-		x++;
+//	if (!f->minus && !f->zero && !f->width && f->precision == -1 && !f->percent)
+//		x++;
 	printf("\n\n                x is [%zu]\n", x);
 	printf("                width is == [%d]\n", f->width);
 	printf("                precision is [%d]\n", f->precision);

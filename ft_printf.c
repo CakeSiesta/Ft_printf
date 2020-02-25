@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:02:35 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/25 20:50:32 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/02/25 21:58:09 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,15 @@ int			ft_printf(const char *format, ...)
 		if (format[x] == '%')
 		{
 			len = parser(&f, &format[x + 1], arg);
-			parser_spec(&format[x + 1], len, &f, arg);
+			printf("nons is %d\n", f.none);
+			if (f.none)
+				x += len + 1;
+			else
+			{
+			//	printf("\x1b[35m""Hello everyone\n""\x1b[0m");
+				parser_spec(&format[x + 1], len, &f, arg);
+				x += len + 1;
+			}
 		}
 		else
 			ft_write(format[x], &put);

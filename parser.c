@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:04:54 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/24 18:50:57 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/25 16:36:55 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,6 @@ size_t	parser(t_f *f, const char *str, va_list arg)
 	if (ft_check_char(specs, str[x]) == 0)
 		f->none = 1;
 	free(specs);
+	printf("\nx is %zu\n", x);
 	return (x);
 }

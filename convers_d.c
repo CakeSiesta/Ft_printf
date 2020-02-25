@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:53:37 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/24 18:36:00 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/25 16:36:48 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	fill_put(t_f *f)
 
 void	convers_d(va_list arg, t_f *f)
 {
-	
+	printf("hello\n");	
 
 }
 

@@ -1,3 +1,6 @@
 *.o
+*.gch
+*.swp
+*.swap
 .DS_Store
 a.out

@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 20:18:39 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/24 20:18:50 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/02/25 20:35:38 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,10 @@ int	ft_atoilen(const char *str, size_t *len)
 		(*len)++;
 	}
 	return ((int)(nb * symb));
+}
+
+void	ft_write(const char c, t_put *put) 
+{
+	write(1, &c, 1);
+	put->pos++;	
 }

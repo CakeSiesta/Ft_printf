@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:04:54 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/25 18:15:31 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/25 20:46:29 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,18 @@ void		struc_init(t_f *f)
 	f->none = 0;
 }
 
-size_t		size_percent(const char *str)
+void		init_put(t_put *put)
 {
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 1;
-	while (str[i] != '%')
-		i++;
-	while (ft_isalpha(str[i]) == 0)
-	{
-		i++;
-		j++;
-	}
-	return (j);
+	put->zero = 0;
+	put->width = 0;
+	put->precision = 0;
+	put->minus = 0;
+	put->neg = 0;
 }
+
+/*
+** x = len of what comes after percent and before specifier
+*/
 
 size_t	parser(t_f *f, const char *str, va_list arg)
 {
@@ -54,10 +50,10 @@ size_t	parser(t_f *f, const char *str, va_list arg)
 			f->zero = 1;
 			x++;
 		}
-		while (str[x++] == '-')
+		while (str[x] == '-')
 		{
 			f->minus = 1;
-		//	x++;
+			x++;
 		}
 		while (str[x] == '0')
 			x++;
@@ -98,10 +94,10 @@ size_t	parser(t_f *f, const char *str, va_list arg)
 	free(specs);
 	if (!f->minus && !f->zero && !f->width && f->precision == -1 && !f->percent)
 		x++;
-	printf("\nx is %zu\n", x);
-	printf(":width is %d\n", f->width);
-	printf(":precision is %d\n", f->precision);
-	printf(":minus is %d\n", f->minus);
-	printf(":zero is %d\n", f->zero);
+	printf("\n\n                x is [%zu]\n", x);
+	printf("                width is == [%d]\n", f->width);
+	printf("                precision is [%d]\n", f->precision);
+	printf("                minus is [%d]\n", f->minus);
+	printf("                zero is [%d]\n\n", f->zero);
 	return (x);
 }

@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:10:12 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/24 22:19:15 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/02/25 20:46:36 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,12 @@ typedef struct	s_f
 
 typedef struct	s_put
 {
-	int			pad_zero;
-	int			pad_width;
-	int			pad_precision;
-	int			pad_minus;
+	int			zero;
+	int			width;
+	int			precision;
+	int			minus;
 	int			neg;
+	int			pos;
 }				t_put;
 
 int				ft_printf(const char *format, ...);
@@ -56,4 +57,7 @@ void			fill_put(t_f *f);
 void			convers_d(va_list arg, t_f *f);
 void			parser_spec(const char *format, size_t len, t_f *f, va_list arg);
 size_t			parser(t_f *f, const char *str, va_list arg);
+void			init_put(t_put *put);
+void			struc_init(t_f *f);
+void			ft_write(const char c, t_put *put);
 #endif

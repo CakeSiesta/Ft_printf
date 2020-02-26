@@ -1,21 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_spec.c                                      :+:      :+:    :+:   */
+/*   utils_u.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/24 17:28:14 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/26 22:13:04 by jherrald         ###   ########.fr       */
+/*   Created: 2020/02/26 22:26:03 by jherrald          #+#    #+#             */
+/*   Updated: 2020/02/26 22:33:56 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	parser_spec(const char *format, t_f *f, t_put *put, va_list arg)
+void		ft_write_unum(unsigned int num, t_put *put)
 {
-	if (format[put->len_perc] == 'd' || format[put->len_perc] == 'i')
-		convers_d(arg, f, put);
-	if (format[put->len_perc] == 'u')
-		convers_u(arg, f, put);
+
+	if (num >= 10)
+	{
+		ft_write_num((num / 10), put);
+		put->pos++;
+	}
+	ft_write((num % 10) + '0', put);
+}
+
+unsigned int		ft_strlen_uint(unsigned int num)
+{
+	unsigned int x;
+
+	x = 0;
+	if (num == 0)
+		return (1);
+	while (num > 0)
+	{
+		num = num / 10;
+		x++;
+	}
+	return (x);
 }

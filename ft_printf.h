@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:10:12 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/25 22:41:51 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/26 13:01:10 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct	s_put
 
 int				ft_printf(const char *format, ...);
 int				ft_atoilen(const char *str, size_t *len);
-void			fill_put(t_f *f, size_t len);
+void			fill_put(t_f *f, t_put *put, size_t len);
 void			convers_d(va_list arg, t_f *f, t_put *put);
 void			parser_spec(const char *format, size_t len, t_f *f, va_list arg);
 size_t			parser(t_f *f, const char *str, va_list arg);

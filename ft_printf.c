@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:02:35 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/26 16:48:49 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/26 18:18:47 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int			ft_printf(const char *format, ...)
 		else
 		{
 			ft_write(format[x], &put);
-			printf("position in else is %d\n", put.pos);
 		}
 		x++;
 	}
@@ -48,8 +47,8 @@ int			ft_printf(const char *format, ...)
 
 int main ()
 {
-	ft_printf("coucou%010d\n", -88);
-	printf("coucou[%010d]\n", -88);
+	ft_printf("coucou{%04d}\n", -12345);
+	printf("coucou[%04d]\n", -12345);
 	return (0);
 }
 

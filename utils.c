@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 20:18:39 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/26 16:26:49 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/26 17:43:51 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,10 @@ void	ft_write_num(int num, t_put *put)
 {
 	if (num < 0)
 		num = -num;
-	printf("\ncoucou la mif \n");
-	printf("put pos is %d\n", put->pos);
 	if (num >= 10)
 	{
 		ft_write_num((num / 10), put);
 		put->pos++;
 	}
-		printf("put pos t1 is %d\n", put->pos);
 	ft_write((num % 10) + '0', put);
 }

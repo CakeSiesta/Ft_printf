@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:10:12 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/26 14:25:02 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/02/26 16:48:46 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,20 @@ typedef struct	s_put
 	int			precision;
 	int			neg;
 	int			pos;
+	size_t		len; // len de l'argument convert
+	size_t		len_perc; // len entre le pourcent et le specifier
 }				t_put;
 
 int				ft_printf(const char *format, ...);
 int				ft_atoilen(const char *str, size_t *len);
-void			fill_put(t_f *f, t_put *put, size_t len);
-void			apply_zero(t_f *f, t_put *put, int nb, size_t len);
+void			fill_put(t_f *f, t_put *put);
+void			apply_zero(t_f *f, t_put *put, int nb);
 void			convers_d(va_list arg, t_f *f, t_put *put);
-void			parser_spec(const char *format, size_t len, t_f *f, va_list arg);
+void			parser_spec(const char *format, t_f *f, t_put *put, va_list arg);
 size_t			parser(t_f *f, const char *str, va_list arg);
 void			init_put(t_put *put);
 void			struc_init(t_f *f);
 void			ft_write(const char c, t_put *put);
 int				ft_strlen_int(int num);
+void			ft_write_num(int num, t_put *put);
 #endif

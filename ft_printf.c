@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:02:35 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/26 14:26:46 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/02/26 16:48:49 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,31 @@
 int			ft_printf(const char *format, ...)
 {
 	size_t		x;
-	size_t		len;
 	t_f			f;
 	va_list		arg;
 	t_put		put;
 
 	x = 0;
 	va_start(arg, format);
-	init_put(&put);
 	put.pos = 0;
 	while (format[x])
 	{
 		if (format[x] == '%')
 		{
-			len = parser(&f, &format[x + 1], arg);
+			put.len_perc = parser(&f, &format[x + 1], arg);
 			if (f.none)
-				x += len + 1;
+				x += put.len_perc + 1;
 			else
 			{
-				printf("len is %zu\n", len);
-				parser_spec(&format[x + 1], len, &f, arg);
-				x += len + 1;
+				parser_spec(&format[x + 1], &f, &put, arg);
+				x += put.len_perc + 1;
 			}
 		}
 		else
+		{
 			ft_write(format[x], &put);
+			printf("position in else is %d\n", put.pos);
+		}
 		x++;
 	}
 	va_end(arg);

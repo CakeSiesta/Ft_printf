@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:02:35 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/26 19:12:06 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/26 21:42:03 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int			ft_printf(const char *format, ...)
 /*
 int main ()
 {
-	ft_printf("coucou%7i\n", 12345);
-	printf("%7i\n", 12345);
+	ft_printf("%03d\n", 643);
+	printf("%03d\n", 643);
 	return (0);
 }
 */

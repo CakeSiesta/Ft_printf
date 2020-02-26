@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 20:18:39 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/25 22:40:59 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/26 14:11:52 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,7 @@ int		ft_strlen_int(int num)
 	if (num == 0)
 		return (1);
 	if (num < 0)
-	{
-		x++;
 		num *= -1;
-	}
 	while (num > 0)
 	{
 		num = num / 10;

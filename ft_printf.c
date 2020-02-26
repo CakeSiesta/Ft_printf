@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:02:35 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/26 13:01:11 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/26 14:26:46 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ int			ft_printf(const char *format, ...)
 
 int main ()
 {
-	ft_printf("coucou%10d\n", 88);
+	ft_printf("coucou%010d\n", -88);
+	printf("coucou[%010d]\n", -88);
 	return (0);
 }
 

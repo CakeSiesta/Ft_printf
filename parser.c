@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:04:54 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/25 22:26:07 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/26 13:53:24 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,8 @@ void		struc_init(t_f *f)
 
 void		init_put(t_put *put)
 {
-	put->zero = 0;
 	put->width = 0;
 	put->precision = 0;
-	put->minus = 0;
 	put->neg = 0;
 }
 

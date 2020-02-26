@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:10:12 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/26 22:33:58 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/26 23:28:06 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ int				ft_atoilen(const char *str, size_t *len);
 void			fill_put(t_f *f, t_put *put);
 void			convers_d(va_list arg, t_f *f, t_put *put);
 void			convers_u(va_list arg, t_f *f, t_put *put);
+void			convers_x(va_list arg, t_f *f, t_put *put);
+int				ft_lenght_hex(long long unsigned int num);
+char			ft_hex_conversion(long long unsigned int n);
+char			ft_hexa_min(long long unsigned int num, t_put *put);
 void			parser_spec(const char *format, t_f *f, t_put *put,	va_list arg);
 size_t			parser(t_f *f, const char *str, va_list arg);
 void			init_put(t_put *put);
@@ -63,7 +67,9 @@ void			struc_init(t_f *f);
 void			ft_write(const char c, t_put *put);
 int				ft_strlen_int(int num);
 unsigned int	ft_strlen_uint(unsigned int num);
+unsigned long long int	ft_strlen_lluint(unsigned long long num);
 void			ft_write_num(int num, t_put *put);
 void			ft_write_unum(unsigned int num, t_put *put);
+void			ft_write_llunum(unsigned long long int num, t_put *put);
 
 #endif

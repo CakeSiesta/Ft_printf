@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:02:35 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/26 22:34:01 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/26 23:40:25 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ int			ft_printf(const char *format, ...)
 	va_end(arg);
 	return (0);
 }
-/*
+
 int main ()
 {
-	ft_printf("[%15u]\n", 4294967295u);
-	printf("[%15u]\n", 4294967295u);
+	ft_printf("[%x]\n", 123);
+	printf("[%x]\n", 123);
 	return (0);
 }
-*/
+
 /*
 int		main(void)
 {

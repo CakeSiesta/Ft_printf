@@ -6,13 +6,13 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:53:37 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/26 21:42:32 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/26 22:04:39 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	apply_zero(t_f *f, t_put *put, int nb)
+static void	apply_zero(t_f *f, t_put *put, int nb)
 {
 	if (put->neg)
 		ft_write('-', put);
@@ -21,7 +21,7 @@ void	apply_zero(t_f *f, t_put *put, int nb)
 	ft_write_num(nb, put);
 }
 
-void	apply_minus(t_f *f, t_put *put, int nb)
+static void	apply_minus(t_f *f, t_put *put, int nb)
 {
 	if (put->neg)
 		ft_write('-', put);
@@ -33,7 +33,7 @@ void	apply_minus(t_f *f, t_put *put, int nb)
 		ft_write(' ', put);
 }
 
-void	apply_width(t_f *f, t_put *put, int nb)
+static void	apply_width(t_f *f, t_put *put, int nb)
 {
 	while (put->width--)
 		ft_write(' ', put);
@@ -44,7 +44,7 @@ void	apply_width(t_f *f, t_put *put, int nb)
 	ft_write_num(nb, put);
 }
 
-void	apply_precision(t_f *f, t_put *put, int nb)
+static void	apply_precision(t_f *f, t_put *put, int nb)
 {
 	if (put->neg)
 		ft_write('-', put);
@@ -53,14 +53,23 @@ void	apply_precision(t_f *f, t_put *put, int nb)
 	ft_write_num(nb, put);
 }
 
-void	apply_precision_param_zero(t_f *f, t_put *put)
+static void	apply_precision_param_zero(t_f *f, t_put *put, int nb)
 {
-	put->width = f->width;
-	while (put->width--)
-		ft_write(' ', put);
+	if (f->precision == 0 && nb == 0)
+	{
+		put->width = f->width;
+		while (put->width--)
+			ft_write(' ', put);
+	}
+	if (!put->precision && !put->width && !f->zero && !f->minus)
+	{
+		if (put->neg)
+			ft_write('-', put);
+		ft_write_num(nb, put);
+	}
 }
 
-void	convers_d(va_list arg, t_f *f, t_put *put)
+void		convers_d(va_list arg, t_f *f, t_put *put)
 {
 	int		nb;
 
@@ -73,12 +82,13 @@ void	convers_d(va_list arg, t_f *f, t_put *put)
 		put->neg = 1;
 	}
 	fill_put(f, put);
-	if (f->precision == 0 && nb == 0)
+	if ((f->precision == 0 && nb == 0) || (!put->precision && !put->width
+		&& !f->zero && !f->minus))
 	{
-		apply_precision_param_zero(f, put);
+		apply_precision_param_zero(f, put, nb);
 		return ;
 	}
-	if (f->zero && f->width && !f->minus )
+	if (f->zero && f->width && !f->minus)
 		apply_zero(f, put, nb);
 	else if (f->minus && f->width && !f->zero)
 		apply_minus(f, put, nb);
@@ -86,10 +96,4 @@ void	convers_d(va_list arg, t_f *f, t_put *put)
 		apply_width(f, put, nb);
 	if (put->precision && !put->width && !f->zero && !f->minus)
 		apply_precision(f, put, nb);
-	if (!put->precision && !put->width && !f->zero && !f->minus)
-	{
-		if (put->neg)
-			ft_write('-', put);
-		ft_write_num(nb, put);
-	}
 }

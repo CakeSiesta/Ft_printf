@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:02:35 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/26 18:18:47 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/26 19:12:06 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,19 @@ int			ft_printf(const char *format, ...)
 	va_end(arg);
 	return (0);
 }
-
+/*
 int main ()
 {
-	ft_printf("coucou{%04d}\n", -12345);
-	printf("coucou[%04d]\n", -12345);
+	ft_printf("coucou%7i\n", 12345);
+	printf("%7i\n", 12345);
 	return (0);
 }
-
-//
-////int		main(void)
-////{
-////	ft_printf("false print[%-7p]\n", 2);
-////	printf("-true print[%-7p]\n", 2);
-////	return (0);
-////}
+*/
+/*
+int		main(void)
+{
+	ft_printf("false print[%-7p]\n", 2);
+	printf("-true print[%-7p]\n", 2);
+	return (0);
+}
+*/

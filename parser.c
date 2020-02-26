@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:04:54 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/26 16:47:43 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/26 18:59:31 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,10 @@ size_t	parser(t_f *f, const char *str, va_list arg)
 	free(specs);
 //	if (!f->minus && !f->zero && !f->width && f->precision == -1 && !f->percent)
 //		x++;
-	printf("\n\n                x is [%zu]\n", x);
-	printf("                width is == [%d]\n", f->width);
-	printf("                precision is [%d]\n", f->precision);
-	printf("                minus is [%d]\n", f->minus);
-	printf("                zero is [%d]\n\n", f->zero);
+//	printf("\n\n                x is [%zu]\n", x);
+//	printf("                width is == [%d]\n", f->width);
+//	printf("                precision is [%d]\n", f->precision);
+//	printf("                minus is [%d]\n", f->minus);
+//	printf("                zero is [%d]\n\n", f->zero);
 	return (x);
 }

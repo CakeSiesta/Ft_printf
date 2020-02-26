@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_spec.c                                      :+:      :+:    :+:   */
+/*   utils_nb.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/24 17:28:14 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/26 19:04:26 by jherrald         ###   ########.fr       */
+/*   Created: 2020/02/26 18:43:47 by jherrald          #+#    #+#             */
+/*   Updated: 2020/02/26 19:08:14 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	parser_spec(const char *format, t_f *f, t_put *put, va_list arg)
+void	fill_put(t_f *f, t_put *put)
 {
-	if (format[put->len_perc] == 'd' || format[put->len_perc] == 'i')
-		convers_d(arg, f, put);
+	if (f->precision != -1 && f->precision > put->len)
+		put->precision = f->precision - put->len;
+	if (f->width > f->precision && f->width > put->len)
+		put->width = f->width - put->precision - put->neg - put->len;
 }

@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 15:33:28 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/27 17:41:54 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/27 18:07:56 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void		fill_put_p(t_f *f, t_put *put)
 {
-	printf("put->len%d\n", put->len);
 	if (f->precision > put->len - 2)
 		put->precision = f->precision - put->len + 2;
 	if (f->width > put->len)
@@ -25,10 +24,10 @@ static void		apply_minus(t_f *f, t_put *put, unsigned long long int nb)
 {
 	ft_write('0', put);
 	ft_write('x', put);
-	while (put->precision--)
+	while (put->precision-- > 0)
 		ft_write('0', put);
 	ft_hexa_min(nb, put, 0);
-	while (put->width--)
+	while (put->width-- > 0)
 		ft_write(' ', put);
 
 /*	while (put->width--)
@@ -51,7 +50,7 @@ static void		apply_width(t_f *f, t_put *put, unsigned long long int nb)
 	{
 		while (put->precision)
 		{
-			ft_write('0', put); 
+			ft_write('0', put);
 			put->precision--;
 		}
 	}

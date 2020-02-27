@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 15:33:28 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/27 18:50:05 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/02/27 19:43:09 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 static void		fill_put_p(t_f *f, t_put *put)
 {
-	if (f->precision > put->len - 2)
+	if (f->precision != -1 && f->precision > put->len - 2)
 		put->precision = f->precision - put->len + 2;
-	if (f->width > put->len && f->precision > -1)
-		put->width = f->width - put->len - f->precision - 2;
-	if (f->width > put->len && f->precision == -1)
-		put->width = f->width - put->len;
+	if (f->width > put->len && f->width > f->precision)
+		put->width = f->width - put->len - f->precision + 2;
 }
 
 static void		apply_minus(t_f *f, t_put *put, unsigned long long int nb)
@@ -63,14 +61,12 @@ void	convers_p(va_list arg, t_f *f, t_put *put)
 
 	nb = va_arg(arg, unsigned long long int);
 	put->len = ft_lenght_hex(nb) + 2;
-	if (nb == 0 && !f->width && f->precision == -1)
+	init_put(put);
+	fill_put_p(f, put);
+	if (nb == 0 && !f->width && f->precision == -1 && nb != 0x0)
 		ft_hexa_min(nb, put, 0);
 	if (f->minus && put->width)
 		apply_minus(f, put, nb);
 	if (!f->minus && put->width)
 		apply_width(f, put, nb);
-
-//	ft_write('0', put);
-//	ft_write('x', put);
-//	ft_hexa_min(nb, put, 0);
 }

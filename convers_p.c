@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 15:33:28 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/27 20:41:57 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/27 20:43:51 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,24 +78,12 @@ void	convers_p(va_list arg, t_f *f, t_put *put)
 	nb = va_arg(arg, unsigned long long int);
 	put->len = ft_lenght_hex(nb) + 2;
 	fill_put_p(f, put, nb);
-//	if ((void *)nb == NULL)
-//	{
-//		printf("coucou la mifuo \n");
-//		ft_write('0', put);
-//		ft_write('x', put);
-//		ft_write('0', put);
-//	}
-//	if (nb == 0 && !f->width && f->precision == 0)
-//	{
-//		ft_write('0', put);
-//		ft_write('x', put);
-//	}
 	if (f->minus && put->width)
 		apply_minus(f, put, nb);
 	else if (!f->minus && put->width)
 		apply_width(f, put, nb);
 	else if (put->precision && !put->width)
-		apply_precision(f, put, nb); // no width to put du coup
+		apply_precision(f, put, nb);
 	else
 	{
 		ft_write('0', put);

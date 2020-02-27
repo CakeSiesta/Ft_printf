@@ -6,33 +6,15 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 20:44:21 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/27 22:15:58 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/27 22:17:32 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void		convers_s_null_param(t_f *f, t_put *put)
-{
-	char	*str;
-	int		x;
-
-	x = 0;
-	str = "(null)";
-	while (str[x])
-	{
-		ft_write(str[x], put);
-		x++;
-	}
-
-
-}
-
 static void		fill_put_s(t_f *f, t_put *put, int len)
 {
 	init_put(put);
-//	if (f->precision == 0)
-//		put->precision = 0;
 	if (f->precision > 0 && f->precision < len)
 		put->precision = f->precision;
 	if (put->precision && f->width > put->precision)
@@ -76,11 +58,7 @@ void			convers_s(va_list arg, t_f *f, t_put *put)
 	x = 0;
 	str = va_arg(arg, char *);
 	if (str == NULL)
-	{
 		str = "(null)";
-//		convers_s_null_param(f, put);
-//		return ;
-	}
 	len = ft_strlen(str);
 	fill_put_s(f, put, len);
 	if (f->precision == 0)

@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 20:44:21 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/27 22:17:32 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/27 22:29:45 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,21 @@ static void		apply_width(t_f *f, t_put *put, char *str)
 	int x;
 
 	x = 0;
-	if (!f->minus)
+	if (!f->minus && !f->zero)
 		while (put->width--)
 			ft_write(' ', put);
+	if (f->zero)
+		while (put->width)
+		{
+			ft_write('0', put);
+			put->width--;
+		}
 	if (!put->precision)
 		while (str[x])
-		{
-			ft_write(str[x], put);
-			x++;
-		}
+			ft_write(str[x++], put);
 	if (put->precision)
-		while (str[x] && put->precision)
-		{
-			ft_write(str[x], put);
-			put->precision--;
-			x++;
-		}
+		while (str[x] && put->precision--)
+			ft_write(str[x++], put);
 	if (f->minus)
 		while (put->width--)
 			ft_write(' ', put);
@@ -71,9 +70,6 @@ void			convers_s(va_list arg, t_f *f, t_put *put)
 		apply_width(f, put, str);
 	else
 		while (str[x])
-		{
-			ft_write(str[x], put);
-			x++;
-		}
+			ft_write(str[x++], put);
 //	free(str); // not mallocated so no need?
 }

@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 23:09:18 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/27 12:14:16 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/27 15:04:07 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void		ft_write_llunum(unsigned long long num, t_put *put)
 {
-
 	if (num >= 10)
 	{
 		ft_write_num((num / 10), put);
@@ -53,40 +52,55 @@ int		ft_lenght_hex(long long unsigned int num)
 	return (x);
 }
 
-char	ft_hex_conversion(long long unsigned int n)
+char	ft_hex_conversion(long long unsigned int n, int x)
 {
 	long long unsigned int		mod;
-	char						*hex;
+	char						*hex_min;
+	char						*hex_maj;
 
-	hex = "0123456789abcdef";
-	if (n)
-	{
-		mod = n % 16;
-		return (hex[mod]);
+	hex_min = "0123456789abcdef";
+	hex_maj = "0123456789ABCDEF";
+	if (x == 0)
+	{	
+		if (n)
+		{
+			mod = n % 16;
+			return (hex_min[mod]);
+		}
+	}
+	if (x == 1)
+	{	
+		if (n)
+		{
+			mod = n % 16;
+			return (hex_maj[mod]);
+		}
 	}
 	return (0);
 }
 
-char	ft_hexa_min(long long unsigned int num, t_put *put)
+char	ft_hexa_min(long long unsigned int num, t_put *put, int x)
 {
 	int		size;
 	char	*new;
-	int		x;
+	int		i;
 
-	x = 0;
+	i = 0;
 	size = ft_lenght_hex(num);
 	if (!(new = (char *)malloc(sizeof(char) * (size + 1))))
 		return (0);
+	if (size == 1 && num == 0)
+		ft_write('0', put);
 	new[size] = '\0';
 	while (size-- > 0)
 	{
-		new[size] = ft_hex_conversion(num);
+		new[size] = ft_hex_conversion(num, x);
 		num = num / 16;
 	}
-	while (new[x])
+	while (new[i])
 	{
-		ft_write(new[x], put);
-		x++;
+		ft_write(new[i], put);
+		i++;
 	}
 	free(new);
 	return (0);

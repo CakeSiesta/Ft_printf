@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:02:35 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/27 12:14:14 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/27 14:55:22 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int			ft_printf(const char *format, ...)
 /*
 int main ()
 {
-	ft_printf("[%02.7x]\n", 3267);
-	printf("[%02.7x]\n", 3267);
+	ft_printf("[%x]\n", 0);
+	printf("[%x]\n", 0);
 	return (0);
 }
 */

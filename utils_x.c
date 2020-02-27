@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 23:09:18 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/26 23:40:46 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/27 12:14:16 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ char	ft_hexa_min(long long unsigned int num, t_put *put)
 		ft_write(new[x], put);
 		x++;
 	}
-	printf("\nnum ==%llu\n", num);
 	free(new);
 	return (0);
 }

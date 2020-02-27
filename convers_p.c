@@ -6,25 +6,32 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 15:33:28 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/27 19:43:09 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/02/27 20:41:57 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void		fill_put_p(t_f *f, t_put *put)
+static void		fill_put_p(t_f *f, t_put *put, unsigned long long int nb)
 {
+	init_put(put);
 	if (f->precision != -1 && f->precision > put->len - 2)
 		put->precision = f->precision - put->len + 2;
 	if (f->width > put->len && f->width > f->precision)
+	{
 		put->width = f->width - put->len - f->precision + 2;
+		if (f->precision == -1)
+			put->width = put->width - 3;
+	}
+	if (nb == 0 && f->width)
+		put->width = f->width - 3;
 }
 
 static void		apply_minus(t_f *f, t_put *put, unsigned long long int nb)
 {
 	ft_write('0', put);
 	ft_write('x', put);
-	while (put->precision-- > -1)
+	while (put->precision-- > 0)
 		ft_write('0', put);
 	ft_hexa_min(nb, put, 0);
 	while (put->width-- > 0)
@@ -55,18 +62,45 @@ static void		apply_width(t_f *f, t_put *put, unsigned long long int nb)
 	ft_hexa_min(nb, put, 0);
 }
 
+static void		apply_precision(t_f *f, t_put *put, unsigned long long int nb)
+{
+	ft_write('0', put);
+	ft_write('x', put);
+	while (put->precision--)
+		ft_write('0', put);
+	ft_hexa_min(nb, put, 0);
+}
+
 void	convers_p(va_list arg, t_f *f, t_put *put)
 {
 	unsigned long long 	nb;
 
 	nb = va_arg(arg, unsigned long long int);
 	put->len = ft_lenght_hex(nb) + 2;
-	init_put(put);
-	fill_put_p(f, put);
-	if (nb == 0 && !f->width && f->precision == -1 && nb != 0x0)
-		ft_hexa_min(nb, put, 0);
+	fill_put_p(f, put, nb);
+//	if ((void *)nb == NULL)
+//	{
+//		printf("coucou la mifuo \n");
+//		ft_write('0', put);
+//		ft_write('x', put);
+//		ft_write('0', put);
+//	}
+//	if (nb == 0 && !f->width && f->precision == 0)
+//	{
+//		ft_write('0', put);
+//		ft_write('x', put);
+//	}
 	if (f->minus && put->width)
 		apply_minus(f, put, nb);
-	if (!f->minus && put->width)
+	else if (!f->minus && put->width)
 		apply_width(f, put, nb);
+	else if (put->precision && !put->width)
+		apply_precision(f, put, nb); // no width to put du coup
+	else
+	{
+		ft_write('0', put);
+		ft_write('x', put);
+		if (f->precision != 0)
+			ft_hexa_min(nb, put, 0);
+	}
 }

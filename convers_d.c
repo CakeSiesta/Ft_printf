@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:53:37 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/28 16:19:43 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/28 17:13:35 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ static void	apply_precision_param_zero(t_f *f, t_put *put, int nb)
 		while (put->width--)
 			ft_write(' ', put);
 	}
-	if (nb == 0)
-	{
-		while(put->width--)
-			ft_write(' ', put);
-		ft_write('0', put);
-	}
+//	if (nb == 0)
+//	{
+//		while(put->width--)
+//			ft_write(' ', put);
+//		ft_write('0', put);
+//	}
 	if (!put->precision && !put->width && !f->zero && !f->minus)
 	{
 		if (put->neg)
@@ -89,7 +89,7 @@ void		convers_d(va_list arg, t_f *f, t_put *put)
 	}
 	fill_put(f, put);
 	if ((f->precision == 0 && nb == 0) || (!put->precision && !put->width
-		&& !f->zero && !f->minus) || (nb == 0))
+		&& !f->zero && !f->minus))
 	{
 		apply_precision_param_zero(f, put, nb);
 		return ;

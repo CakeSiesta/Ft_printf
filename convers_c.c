@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 08:48:06 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/28 16:19:38 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/28 17:18:19 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,20 @@ void			convers_c(va_list arg, t_f *f, t_put *put, int i)
 	}
 	if (!i)
 		c = va_arg(arg, int);
-	if (put->width && f->minus)
+	if (put->width)
 	{
-		ft_write(c, put);
-		while (put->width--)
-			ft_write(' ', put);
-	}
-	else if (put->width && !f->minus)
-	{
-		while (put->width--)
-			ft_write(' ', put);
-		ft_write(c, put);
+		if (f->minus)
+		{
+			ft_write(c, put);
+			while (put->width--)
+				ft_write(' ', put);
+		}
+		if (!f->minus)
+		{
+			while (put->width--)
+				ft_write(' ', put);
+			ft_write(c, put);
+		}
 	}
 	if (!put->width)
 		ft_write(c, put);

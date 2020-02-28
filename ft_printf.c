@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:02:35 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/28 15:35:11 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/28 15:52:18 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,13 @@ int			ft_printf(const char *format, ...)
 		if (format[x] == '%')
 		{
 			put.len_perc = parser(&f, &format[x + 1], arg);
+			printf("non ? %d\n", f.none);
+			printf("put len %d\n", put.len_perc);
+			printf("char 1 c is %c\n", format[x]);
 			if (f.none)
 			{
 				x += put.len_perc;
+				printf("char 2 c is %c\n", format[x]);
 			}
 			else
 			{
@@ -39,6 +43,7 @@ int			ft_printf(const char *format, ...)
 		}
 		else
 		{
+			printf("char 3 c is %c\n", format[x]);
 			ft_write(format[x], &put);
 		}
 		x++;
@@ -46,18 +51,18 @@ int			ft_printf(const char *format, ...)
 	va_end(arg);
 	return (0);
 }
-/*
+
 int main ()
 {
 	char c;
 
 	c = 'a';
 //	printf("%hhd", 100);
-	ft_printf("{%0d}", 0);
-	printf("\n{%0d}\n", 0);
+	ft_printf("{%n}");
+	printf("\n{%n}\n");
 	return (0);
 }
-*/
+
 /*
 int		main(void)
 {

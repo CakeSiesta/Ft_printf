@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 20:44:21 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/27 22:29:45 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/28 10:43:34 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,4 @@ void			convers_s(va_list arg, t_f *f, t_put *put)
 	else
 		while (str[x])
 			ft_write(str[x++], put);
-//	free(str); // not mallocated so no need?
 }

@@ -6,13 +6,13 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 23:09:18 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/27 17:41:55 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/28 11:05:23 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		ft_write_llunum(unsigned long long num, t_put *put)
+void	ft_write_llunum(unsigned long long num, t_put *put)
 {
 	if (num >= 10)
 	{
@@ -22,7 +22,7 @@ void		ft_write_llunum(unsigned long long num, t_put *put)
 	ft_write((num % 10) + '0', put);
 }
 
-unsigned long long		ft_strlen_lluint(unsigned long long num)
+t_llu	ft_strlen_lluint(unsigned long long num)
 {
 	unsigned long long x;
 
@@ -61,7 +61,7 @@ char	ft_hex_conversion(long long unsigned int n, int x)
 	hex_min = "0123456789abcdef";
 	hex_maj = "0123456789ABCDEF";
 	if (x == 0)
-	{	
+	{
 		if (n)
 		{
 			mod = n % 16;
@@ -69,7 +69,7 @@ char	ft_hex_conversion(long long unsigned int n, int x)
 		}
 	}
 	if (x == 1)
-	{	
+	{
 		if (n)
 		{
 			mod = n % 16;
@@ -105,4 +105,3 @@ char	ft_hexa_min(long long unsigned int num, t_put *put, int x)
 	free(new);
 	return (0);
 }
-

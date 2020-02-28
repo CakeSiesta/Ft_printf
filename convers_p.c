@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 15:33:28 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/27 20:43:51 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/28 10:57:44 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static void		apply_minus(t_f *f, t_put *put, unsigned long long int nb)
 	while (put->width-- > 0)
 		ft_write(' ', put);
 }
-
 
 static void		apply_width(t_f *f, t_put *put, unsigned long long int nb)
 {
@@ -71,9 +70,9 @@ static void		apply_precision(t_f *f, t_put *put, unsigned long long int nb)
 	ft_hexa_min(nb, put, 0);
 }
 
-void	convers_p(va_list arg, t_f *f, t_put *put)
+void			convers_p(va_list arg, t_f *f, t_put *put)
 {
-	unsigned long long 	nb;
+	unsigned long long	nb;
 
 	nb = va_arg(arg, unsigned long long int);
 	put->len = ft_lenght_hex(nb) + 2;

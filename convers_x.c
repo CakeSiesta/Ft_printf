@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 22:58:23 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/27 17:41:59 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/28 11:02:24 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ static void	apply_precision(t_f *f, t_put *put, t_llu nb, int x)
 	while (put->precision--)
 		ft_write('0', put);
 	ft_hexa_min(nb, put, x);
-
 }
 
 static void	apply_precision_param_zero(t_f *f, t_put *put, t_llu nb, int x)

@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:10:12 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/28 10:30:50 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/28 11:00:59 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ typedef struct	s_put
 	int			precision;
 	int			neg;
 	int			pos;
-	size_t		len; // len de l'argument convert
-	size_t		len_perc; // len entre le pourcent et le specifier
+	size_t		len;
+	size_t		len_perc;
 }				t_put;
 
 int				ft_printf(const char *format, ...);
@@ -63,14 +63,14 @@ void			convers_c(va_list arg, t_f *f, t_put *put, int i);
 int				ft_lenght_hex(long long unsigned int num);
 char			ft_hex_conversion(long long unsigned int n, int x);
 char			ft_hexa_min(long long unsigned int num, t_put *put, int x);
-void			parser_spec(const char *format, t_f *f, t_put *put,	va_list arg);
+void			parse_spec(const char *format, t_f *f, t_put *put, va_list arg);
 size_t			parser(t_f *f, const char *str, va_list arg);
 void			init_put(t_put *put);
 void			struc_init(t_f *f);
 void			ft_write(const char c, t_put *put);
 int				ft_strlen_int(int num);
 unsigned int	ft_strlen_uint(unsigned int num);
-unsigned long long int	ft_strlen_lluint(unsigned long long num);
+t_llu			ft_strlen_lluint(unsigned long long num);
 void			ft_write_num(int num, t_put *put);
 void			ft_write_unum(unsigned int num, t_put *put);
 void			ft_write_llunum(unsigned long long int num, t_put *put);

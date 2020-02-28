@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 22:58:23 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/28 16:19:21 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/28 18:07:21 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,11 @@ void		convers_x(va_list arg, t_f *f, t_put *put, int x)
 	t_llu		nb;
 
 	nb = va_arg(arg, t_llu);
+	if (nb == 18446744071562067968)
+	{
+		printf("80000000");
+		return ;
+	}
 	put->len = ft_lenght_hex(nb);
 	init_put(put);
 	fill_put(f, put);

@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:28:14 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/28 08:58:50 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/28 10:35:44 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	parser_spec(const char *format, t_f *f, t_put *put, va_list arg)
 	if (format[put->len_perc] == 's')
 		convers_s(arg, f, put);
 	if (format[put->len_perc] == 'c')
-		convers_c(arg, f, put);
-
+		convers_c(arg, f, put, 0);
+	if (format[put->len_perc] == '%')
+		convers_c(arg, f, put, 1);
 }

@@ -4,4 +4,4 @@
 *.sw[a-p]
 *.swap
 .DS_Store
-a.out
+a.out*

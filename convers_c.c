@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 08:48:06 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/28 09:16:49 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/28 10:34:02 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,25 @@ static void		fill_put_c(t_f *f, t_put *put)
 		put->width = f->width - 1;
 }
 
-void			convers_c(va_list arg, t_f *f, t_put *put)
+void			convers_c(va_list arg, t_f *f, t_put *put, int i)
 {
 	char c;
 
-	c = va_arg(arg, int);
 	fill_put_c(f, put);
+	if (i)
+		c = '%';
+	if (i && f->zero)
+	{
+		while (put->width > 0)
+		{
+			ft_write('0', put);
+			put->width--;
+		}
+		ft_write(c, put);
+		return ;
+	}
+	if (!i)
+		c = va_arg(arg, int);
 	if (put->width)
 	{
 		if (f->minus)

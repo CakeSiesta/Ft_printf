@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:10:12 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/28 08:49:15 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/28 10:30:50 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void			convers_u(va_list arg, t_f *f, t_put *put);
 void			convers_x(va_list arg, t_f *f, t_put *put, int x);
 void			convers_p(va_list arg, t_f *f, t_put *put);
 void			convers_s(va_list arg, t_f *f, t_put *put);
-void			convers_c(va_list arg, t_f *f, t_put *put);
+void			convers_c(va_list arg, t_f *f, t_put *put, int i);
 int				ft_lenght_hex(long long unsigned int num);
 char			ft_hex_conversion(long long unsigned int n, int x);
 char			ft_hexa_min(long long unsigned int num, t_put *put, int x);

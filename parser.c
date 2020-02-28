@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:04:54 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/28 11:03:16 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/28 15:25:34 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,12 @@ size_t	parser(t_f *f, const char *str, va_list arg)
 				f->precision = ft_atoilen(&str[x], &x);
 		}
 	}
+	if (f->precision < -1)
+		f->precision = -1;
 	if (f->precision != -1 || f->minus != 0)
 		f->zero = 0;
 	if (str[x] == '%')
 		f->percent = 1;
-	if (f->precision < -1)
-		f->precision = -1;
 	if (ft_check_char(specs, str[x]) == 0)
 		f->none = 1;
 	free(specs);

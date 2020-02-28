@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:02:35 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/28 11:01:19 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/02/28 13:22:41 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ int			ft_printf(const char *format, ...)
 		{
 			put.len_perc = parser(&f, &format[x + 1], arg);
 			if (f.none)
-				x += put.len_perc + 1;
+			{
+				x += put.len_perc;
+			}
 			else
 			{
 				parse_spec(&format[x + 1], &f, &put, arg);
@@ -51,7 +53,8 @@ int main ()
 
 	c = 'a';
 //	printf("%hhd", 100);
-	ft_printf("[%-20.11x]\n", c);
+	ft_printf("%-u", 42);
+	printf("\n%-u", 42);
 	return (0);
 }
 */

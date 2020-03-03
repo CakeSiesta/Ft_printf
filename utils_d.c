@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 18:43:47 by jherrald          #+#    #+#             */
-/*   Updated: 2020/03/03 10:41:51 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/03/03 11:45:11 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	fill_put(t_f *f, t_put *put)
 		put->width = f->width - put->precision - put->neg - put->len;
 }
 
-void	ft_write_num(int num, t_put *put)
+void	ft_write_num(long num, t_put *put)
 {
 	if (num < 0)
 		num = -num;
@@ -32,7 +32,7 @@ void	ft_write_num(int num, t_put *put)
 	ft_write((num % 10) + '0', put);
 }
 
-int		ft_strlen_int(int num)
+int		ft_strlen_int(long num)
 {
 	int x;
 

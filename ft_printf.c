@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:02:35 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/03/03 11:23:35 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/03/03 11:45:38 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ int main ()
 
 	c = 'a';
 //	printf("%hhd", 100);
-	ft_printf("   our--%0d", 0);
-	printf("\ntheir --%0d\n", 0);
+	ft_printf("   our==%15d", INT_MIN);
+	printf("\ntheir ==%15d\n", INT_MIN);
 	return (0);
 }
 */

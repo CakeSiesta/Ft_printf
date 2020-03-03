@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:10:12 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/02/28 16:19:35 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/03/03 11:45:32 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ size_t			parser(t_f *f, const char *str, va_list arg);
 void			init_put(t_put *put);
 void			struc_init(t_f *f);
 void			ft_write(const char c, t_put *put);
-int				ft_strlen_int(int num);
+int				ft_strlen_int(long num);
 unsigned int	ft_strlen_uint(unsigned int num);
 t_llu			ft_strlen_lluint(unsigned long long num);
-void			ft_write_num(int num, t_put *put);
+void			ft_write_num(long num, t_put *put);
 void			ft_write_unum(unsigned int num, t_put *put);
 void			ft_write_llunum(unsigned long long int num, t_put *put);
 

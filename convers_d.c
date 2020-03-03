@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:53:37 by jherrald          #+#    #+#             */
-/*   Updated: 2020/03/03 11:43:56 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:05:40 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void		convers_d(va_list arg, t_f *f, t_put *put)
 		ft_write('0', put);
 	if (f->zero && f->width && !f->minus)
 		apply_zero(f, put, nb);
-	else if (f->minus && f->width && !f->zero)
+	else if (f->minus)
 		apply_minus(f, put, nb);
 	else if (!f->minus && !f->zero && put->width)
 		apply_width(f, put, nb);

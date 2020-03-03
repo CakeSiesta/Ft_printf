@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 15:33:28 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/28 16:19:17 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:27:32 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static void		fill_put_p(t_f *f, t_put *put, unsigned long long int nb)
 		put->width = f->width - put->len - f->precision + 2;
 		if (f->precision == -1)
 			put->width = put->width - 3;
+		if (f->precision == 0)
+			put->width = put->width - 2;
 	}
 	if (nb == 0 && f->width)
 		put->width = f->width - 3;

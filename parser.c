@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:04:54 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/03/03 10:45:11 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/03/03 12:13:58 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ size_t	parser(t_f *f, const char *str, va_list arg)
 	char	*specs;
 
 	x = 0;
-	specs = ft_strdup("scdiupxX%");
+	specs = "scdiupxX%";
 	struc_init(f);
 	if (ft_isalpha(str[x]) == 0)
 	{
@@ -90,6 +90,5 @@ size_t	parser(t_f *f, const char *str, va_list arg)
 		f->percent = 1;
 	if (ft_check_char(specs, str[x]) == 0)
 		f->none = 1;
-	free(specs);
 	return (x);
 }

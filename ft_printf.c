@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:02:35 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/03/03 11:45:38 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/03/03 12:35:34 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int			ft_printf(const char *format, ...)
 	{
 		if (format[x] == '%')
 		{
+			init_put(&put);
+			struc_init(&f);
 			put.len_perc = parser(&f, &format[x + 1], arg);
 			if (f.none)
 			{
@@ -36,6 +38,8 @@ int			ft_printf(const char *format, ...)
 				parse_spec(&format[x + 1], &f, &put, arg);
 				x += put.len_perc + 1;
 			}
+			init_put(&put);
+			struc_init(&f);
 		}
 		else
 		{
@@ -46,18 +50,19 @@ int			ft_printf(const char *format, ...)
 	va_end(arg);
 	return (0);
 }
-/*
+
 int main ()
 {
 	char c;
 
 	c = 'a';
 //	printf("%hhd", 100);
-	ft_printf("   our==%15d", INT_MIN);
-	printf("\ntheir ==%15d\n", INT_MIN);
+	ft_printf("ultimate4 %*.*x %*.*X\n", 1, 50, 5000, 1, 0, 10);
+	ft_printf("ultimate4 %*.*x %*.*X\n", 1, 50, 5000, 1, 0, 10);
+	printf("ultimate4 %*.*x %*.*X\n", 1, 50, 5000, 1, 0, 10);
 	return (0);
 }
-*/
+
 /*
 int		main(void)
 {

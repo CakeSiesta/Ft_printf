@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 22:58:23 by jherrald          #+#    #+#             */
-/*   Updated: 2020/03/03 13:58:17 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/03/03 20:06:47 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,16 @@ static void	apply_precision_param_zero(t_f *f, t_put *put, t_llu nb, int x)
 
 void		convers_x(va_list arg, t_f *f, t_put *put, int x)
 {
-	t_llu		nb;
+	t_llu	nb;
 
-	nb = 0;
-	nb = va_arg(arg, t_llu);
+
+	nb = va_arg(arg, unsigned int);
 	put->len = ft_lenght_hex(nb);
-	init_put(put);
 	fill_put(f, put);
 	if (nb == 0 && !f->width && f->precision == -1)
 		ft_hexa_min(nb, put, x);
 	if ((f->precision == 0 && nb == 0) || (!put->precision && !put->width
-		&& !f->zero && !f->minus))
+				&& !f->zero && !f->minus))
 	{
 		apply_precision_param_zero(f, put, nb, x);
 		return ;

@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:02:35 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/03/03 14:27:30 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/03/03 20:09:05 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,21 +50,17 @@ int			ft_printf(const char *format, ...)
 	va_end(arg);
 	return (0);
 }
-
+/*
 int main ()
 {
 	char c;
 
 	c = 'a';
 //	printf("%hhd", 100);
-//	ft_printf("ultimate4 %*.*x %*.*X\n", 1, 50, 5000, 1, 0, 10);
-//	ft_printf("ultimate4 %*.*x %*.*X\n", 1, 50, 5000, 1, 0, 10);
-//	printf("ultimate4 %*.*x %*.*X\n", 1, 50, 5000, 1, 0, 10);
-	ft_printf("%x\n", -2147483648);
-	printf("%lx", -2147483648);
+	printf("ultimate2 %*d %*s %*x %*X %*i %*u\n", 1, 5000, 1, "hey", 10, 54, 1, 30, 10, -55, 1, -60);
 	return (0);
 }
-
+*/
 /*
 int		main(void)
 {

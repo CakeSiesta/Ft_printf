@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 22:58:23 by jherrald          #+#    #+#             */
-/*   Updated: 2020/03/03 12:22:02 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/03/03 13:58:17 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,7 @@ void		convers_x(va_list arg, t_f *f, t_put *put, int x)
 	t_llu		nb;
 
 	nb = 0;
-	//printf("nb t0 is %llu\n", nb);
 	nb = va_arg(arg, t_llu);
-	//printf("nb is %llu\n", nb);
 	put->len = ft_lenght_hex(nb);
 	init_put(put);
 	fill_put(f, put);
@@ -81,4 +79,6 @@ void		convers_x(va_list arg, t_f *f, t_put *put, int x)
 		apply_width(f, put, nb, x);
 	if (put->precision && !put->width && !f->zero && !f->minus)
 		apply_precision(f, put, nb, x);
+	else if ((f->zero || f->minus) && !f->width && f->precision == -1)
+		ft_hexa_min(nb, put, x);
 }

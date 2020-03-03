@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 22:06:59 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/28 16:19:20 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/03/03 11:22:18 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void		convers_u(va_list arg, t_f *f, t_put *put)
 		apply_precision_param_zero(f, put, nb);
 		return ;
 	}
+	else if (nb == 0 && !f->width && f->precision == -1)
+		ft_write('0', put);
 	if (f->zero && f->width && !f->minus)
 		apply_zero(f, put, nb);
 	else if (f->minus && f->width && !f->zero)

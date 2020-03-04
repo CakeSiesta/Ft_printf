@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:02:35 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/03/04 18:16:51 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/03/04 20:12:26 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,6 @@ int			ft_printf(const char *format, ...)
 			if (!f.none)
 				parse_spec(&format[x + 1], &f, &put, arg);
 			x += put.len_perc + 1 - f.none;
-			printf("[%d]flag zero\n", f.zero);
-			printf("[%d]flag minus\n", f.minus);
-			printf("[%d]flag width\n", f.width);
-			printf("[%d]flag precision\n", f.precision);
 		}
 		else
 			ft_write(format[x], &put);
@@ -42,9 +38,10 @@ int			ft_printf(const char *format, ...)
 	va_end(arg);
 	return (put.pos);
 }
-
+/*
 int main()
 {
 	ft_printf("oui%0*.5%non\n", -7);
 //	printf("oui%10tnon\n");
 }
+*/

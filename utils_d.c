@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 18:43:47 by jherrald          #+#    #+#             */
-/*   Updated: 2020/03/03 11:45:11 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/03/04 20:18:06 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	ft_write_num(long num, t_put *put)
 	if (num >= 10)
 	{
 		ft_write_num((num / 10), put);
-		put->pos++;
 	}
 	ft_write((num % 10) + '0', put);
 }

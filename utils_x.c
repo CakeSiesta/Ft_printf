@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 23:09:18 by jherrald          #+#    #+#             */
-/*   Updated: 2020/02/28 16:19:34 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/03/04 20:19:20 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 void	ft_write_llunum(unsigned long long num, t_put *put)
 {
 	if (num >= 10)
-	{
 		ft_write_num((num / 10), put);
-		put->pos++;
-	}
 	ft_write((num % 10) + '0', put);
 }
 

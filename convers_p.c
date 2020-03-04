@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 15:33:28 by jherrald          #+#    #+#             */
-/*   Updated: 2020/03/03 14:27:32 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/03/04 14:36:20 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void			convers_p(va_list arg, t_f *f, t_put *put)
 	nb = va_arg(arg, unsigned long long int);
 	put->len = ft_lenght_hex(nb) + 2;
 	fill_put_p(f, put, nb);
-	if (f->minus && put->width)
+	if (f->minus && (put->width || f->precision))
 		apply_minus(f, put, nb);
 	else if (!f->minus && put->width)
 		apply_width(f, put, nb);

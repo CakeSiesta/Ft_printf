@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:02:35 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/03/04 14:21:23 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/03/04 14:39:37 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ int			ft_printf(const char *format, ...)
 int main ()
 {
 	char c;
-
+	ft_printf("%-.75u", 2693642494u);
+	printf("\n%-.75u", 2693642494u);
 	c = 'a';
-	ft_printf("ours  ==%0-48.10%");
-	printf("\ntheir ==%0-48.10%");
+
 	return (0);
 }
 */

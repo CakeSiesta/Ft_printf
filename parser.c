@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:04:54 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/03/04 16:55:40 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/03/04 18:16:48 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,18 @@ void	init_put(t_put *put)
 	put->width = 0;
 	put->precision = 0;
 	put->neg = 0;
+}
+
+static void		parser_conditions(t_f *f, char c, char *specs)
+{
+	if (c == '%')
+		f->percent = 1;
+	if (f->precision < -1)
+		f->precision = -1;
+	if ((f->precision != -1 || f->minus != 0) && !f->percent)
+		f->zero = 0;
+	if (ft_check_char(specs, c) == 0)
+		f->none = 1;
 }
 
 size_t	parser(t_f *f, const char *str, va_list arg)
@@ -78,13 +90,6 @@ size_t	parser(t_f *f, const char *str, va_list arg)
 				f->precision = ft_atoilen(&str[x], &x);
 		}
 	}
-	if (f->precision < -1)
-		f->precision = -1;
-	if (str[x] == '%')
-		f->percent = 1;
-	if ((f->precision != -1 || f->minus != 0) && !f->percent)
-		f->zero = 0;
-	if (ft_check_char(specs, str[x]) == 0)
-		f->none = 1;
+	parser_conditions(f, str[x], specs);
 	return (x);
 }

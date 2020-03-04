@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:04:54 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/03/04 18:16:48 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/03/04 22:36:34 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	init_put(t_put *put)
 
 static void		parser_conditions(t_f *f, char c, char *specs)
 {
+	if (f->width < 0 && (f->width = -f->width))
+			f->minus = 1;
 	if (c == '%')
 		f->percent = 1;
 	if (f->precision < -1)
@@ -46,50 +48,25 @@ size_t	parser(t_f *f, const char *str, va_list arg)
 	size_t	x;
 	char	*specs;
 
-	x = 0;
+	x = 1;
 	specs = "scdiupxX%";
-	struc_init(f);
-	if (ft_isalpha(str[x]) == 0)
+	while (str[x] == '0' && x++)
+		f->zero = 1;
+	while (str[x] == '-' && x++)
+		f->minus = 1;
+	while (str[x] == '0')
+		x++;
+	if (str[x] == '*' && x++)
+		f->width = va_arg(arg, int);
+	else if (str[x] >= '1' && str[x] <= '9')
+		f->width = ft_atoilen(&str[x], &x);
+	if (str[x] == '.' && x++)
 	{
-		while (str[x] == '0')
-		{
-			f->zero = 1;
-			x++;
-		}
-		while (str[x] == '-')
-		{
-			f->minus = 1;
-			x++;
-		}
-		while (str[x] == '0')
-			x++;
-		if (str[x] == '*' || (str[x] >= '1' && str[x] <= '9'))
-		{
-			if (str[x] == '*')
-			{
-				f->width = va_arg(arg, int);
-				if (f->width < 0)
-				{
-					f->minus = 1;
-					f->width = -f->width;
-				}
-				x++;
-			}
-			else
-				f->width = ft_atoilen(&str[x], &x);
-		}
-		if (str[x] == '.')
-		{
-			x++;
-			if (str[x] == '*')
-			{
-				f->precision = va_arg(arg, int);
-				x++;
-			}
-			else
-				f->precision = ft_atoilen(&str[x], &x);
-		}
+		if (str[x] == '*' && x++)
+			f->precision = va_arg(arg, int);
+		else
+			f->precision = ft_atoilen(&str[x], &x);
 	}
 	parser_conditions(f, str[x], specs);
-	return (x);
+	return (x - 1);
 }

@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 08:48:06 by jherrald          #+#    #+#             */
-/*   Updated: 2020/03/04 16:19:48 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/03/04 16:25:53 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void		convers_c_percent(t_f *f, t_put *put, char c)
 		while (put->width > 0)
 		{
 			ft_write('0', put);
-			put->width--;	
+			put->width--;
 		}
 		ft_write(c, put);
 	}
@@ -46,21 +46,16 @@ void			convers_c(va_list arg, t_f *f, t_put *put, int i)
 	}
 	if (!i)
 		c = va_arg(arg, int);
-	if (put->width)
+	if (f->minus)
 	{
-		if (f->minus)
-		{
-			ft_write(c, put);
-			while (put->width--)
-				ft_write(' ', put);
-		}
-		if (!f->minus)
-		{
-			while (put->width--)
-				ft_write(' ', put);
-			ft_write(c, put);
-		}
-	}
-	if (!put->width)
 		ft_write(c, put);
+		while (put->width--)
+			ft_write(' ', put);
+	}
+	else if (!f->minus)
+	{
+		while (put->width--)
+			ft_write(' ', put);
+		ft_write(c, put);
+	}
 }

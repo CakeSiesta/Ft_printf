@@ -6,13 +6,13 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:04:54 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/03/04 22:36:34 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/03/04 22:48:10 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	struc_init(t_f *f)
+void			struc_init(t_f *f)
 {
 	f->zero = 0;
 	f->minus = 0;
@@ -22,7 +22,7 @@ void	struc_init(t_f *f)
 	f->none = 0;
 }
 
-void	init_put(t_put *put)
+void			init_put(t_put *put)
 {
 	put->width = 0;
 	put->precision = 0;
@@ -32,7 +32,7 @@ void	init_put(t_put *put)
 static void		parser_conditions(t_f *f, char c, char *specs)
 {
 	if (f->width < 0 && (f->width = -f->width))
-			f->minus = 1;
+		f->minus = 1;
 	if (c == '%')
 		f->percent = 1;
 	if (f->precision < -1)
@@ -43,7 +43,7 @@ static void		parser_conditions(t_f *f, char c, char *specs)
 		f->none = 1;
 }
 
-size_t	parser(t_f *f, const char *str, va_list arg)
+size_t			parser(t_f *f, const char *str, va_list arg)
 {
 	size_t	x;
 	char	*specs;

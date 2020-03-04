@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:02:35 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/03/04 16:05:28 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/03/04 17:06:03 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,10 @@ int			ft_printf(const char *format, ...)
 	{
 		if (format[x] == '%')
 		{
-			init_put(&put);
-			struc_init(&f);
 			put.len_perc = parser(&f, &format[x + 1], arg);
-			if (f.none)
-				x += put.len_perc;
-			else
-			{
+			if (!f.none)
 				parse_spec(&format[x + 1], &f, &put, arg);
-				x += put.len_perc + 1;
-			}
-			init_put(&put);
-			struc_init(&f);
+			x += put.len_perc + 1 - f.none;
 		}
 		else
 			ft_write(format[x], &put);
@@ -46,26 +38,3 @@ int			ft_printf(const char *format, ...)
 	va_end(arg);
 	return (put.pos);
 }
-/*
-int main ()
-{
-	char c;
-//	ft_printf("%-.75u", 2693642494u);
-//	printf("\n%-.75u", 2693642494u);
-//	ft_printf("%0.*d\n" ,-18,-1360145032);
-//	printf("%0.*d\n" ,-18,-1360145032);
-	ft_printf("%--.x\n" ,2171524446u);
-	printf("%--.x\n" ,2171524446u);
-	c = 'a';
-
-	return (0);
-}
-*/
-/*
-int		main(void)
-{
-	ft_printf("false print[%-7p]\n", 2);
-	printf("-true print[%-7p]\n", 2);
-	return (0);
-}
-*/

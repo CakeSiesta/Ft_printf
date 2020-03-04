@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:04:54 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/03/04 14:07:29 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/03/04 16:55:40 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,6 @@ void	init_put(t_put *put)
 	put->precision = 0;
 	put->neg = 0;
 }
-
-/*
-** x = len of what comes after percent and before specifier
-*/
 
 size_t	parser(t_f *f, const char *str, va_list arg)
 {
@@ -85,9 +81,7 @@ size_t	parser(t_f *f, const char *str, va_list arg)
 	if (f->precision < -1)
 		f->precision = -1;
 	if (str[x] == '%')
-	{
 		f->percent = 1;
-	}
 	if ((f->precision != -1 || f->minus != 0) && !f->percent)
 		f->zero = 0;
 	if (ft_check_char(specs, str[x]) == 0)

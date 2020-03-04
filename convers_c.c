@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 08:48:06 by jherrald          #+#    #+#             */
-/*   Updated: 2020/03/04 13:49:08 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/03/04 14:20:59 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,8 @@ void			convers_c(va_list arg, t_f *f, t_put *put, int i)
 //	printf("f precision %d\n", f->precision);
 	if (i)
 		c = '%';
-	if (i && f->zero)
+	if (i && f->zero && !f->minus)
 	{
-//		printf("coucou la mif \n");
 		while (put->width > 0)
 		{
 			ft_write('0', put);

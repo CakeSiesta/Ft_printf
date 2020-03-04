@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 22:58:23 by jherrald          #+#    #+#             */
-/*   Updated: 2020/03/04 14:36:56 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/03/04 14:59:29 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,7 @@ void		convers_x(va_list arg, t_f *f, t_put *put, int x)
 //	printf("put precision is %d\n", put->precision);
 	if (nb == 0 && !f->width && f->precision == -1)
 		ft_hexa_min(nb, put, x);
-	if ((f->precision == 0 && nb == 0) || (!put->precision && !put->width
-				&& !f->zero && !f->minus))
+	if ((f->precision == 0 && nb == 0) || (!put->precision && !put->width))
 	{
 		apply_precision_param_zero(f, put, nb, x);
 		return ;

@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:02:35 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/03/04 15:13:41 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/03/04 16:05:28 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ int			ft_printf(const char *format, ...)
 			struc_init(&f);
 			put.len_perc = parser(&f, &format[x + 1], arg);
 			if (f.none)
-			{
 				x += put.len_perc;
-			}
 			else
 			{
 				parse_spec(&format[x + 1], &f, &put, arg);
@@ -42,9 +40,7 @@ int			ft_printf(const char *format, ...)
 			struc_init(&f);
 		}
 		else
-		{
 			ft_write(format[x], &put);
-		}
 		x++;
 	}
 	va_end(arg);

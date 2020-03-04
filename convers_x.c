@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 22:58:23 by jherrald          #+#    #+#             */
-/*   Updated: 2020/03/03 20:06:47 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/03/04 13:59:32 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,12 @@ void		convers_x(va_list arg, t_f *f, t_put *put, int x)
 {
 	t_llu	nb;
 
-
 	nb = va_arg(arg, unsigned int);
 	put->len = ft_lenght_hex(nb);
+//	printf("flag percision is %d\n", f->precision);
+//	printf("f minus %d\n", f->minus);
 	fill_put(f, put);
+//	printf("put precision is %d\n", put->precision);
 	if (nb == 0 && !f->width && f->precision == -1)
 		ft_hexa_min(nb, put, x);
 	if ((f->precision == 0 && nb == 0) || (!put->precision && !put->width
@@ -72,7 +74,7 @@ void		convers_x(va_list arg, t_f *f, t_put *put, int x)
 	}
 	if (f->zero && f->width && !f->minus)
 		apply_zero(f, put, nb, x);
-	else if (f->minus && f->width && !f->zero)
+	else if (f->minus && (f->width || put->precision) && !f->zero)
 		apply_minus(f, put, nb, x);
 	else if (!f->minus && !f->zero && put->width)
 		apply_width(f, put, nb, x);

@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:02:35 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/03/04 15:00:16 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/03/04 15:13:41 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int			ft_printf(const char *format, ...)
 		x++;
 	}
 	va_end(arg);
-	return (0);
+	return (put.pos);
 }
 /*
 int main ()

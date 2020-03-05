@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 15:33:28 by jherrald          #+#    #+#             */
-/*   Updated: 2020/03/05 21:21:26 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/03/05 21:32:23 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,26 +72,6 @@ static void		apply_precision(t_put *put, unsigned long long int nb)
 	ft_hexa_min(nb, put, 0);
 }
 
-static void		cas_wtf(t_f *f, t_put *put)
-{
-	if (put->width)
-		put->width++;
-	if (f->minus)
-	{
-		ft_write('0', put);
-		ft_write('x', put);
-		while (put->width--)
-			ft_write(' ', put);
-	}
-	if (!f->minus)
-	{
-		while (put->width--)
-			ft_write(' ', put);
-		ft_write('0', put);
-		ft_write('x', put);
-	}
-}
-
 void			convers_p(va_list arg, t_f *f, t_put *put)
 {
 	unsigned long long	nb;
@@ -101,7 +81,7 @@ void			convers_p(va_list arg, t_f *f, t_put *put)
 	fill_put_p(f, put, nb);
 	if (f->precision == 0 && nb == 0 && f->width)
 	{
-		cas_wtf(f, put);
+		wtf_case(f, put);
 		return ;
 	}
 	if (f->minus && (put->width || f->precision))

@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   convers_p2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/24 17:02:35 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/03/05 21:33:16 by mkravetz         ###   ########.fr       */
+/*   Created: 2020/03/05 21:28:07 by mkravetz          #+#    #+#             */
+/*   Updated: 2020/03/05 21:31:47 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_printf(const char *format, ...)
-{
-	size_t		x;
-	t_f			f;
-	va_list		arg;
-	t_put		put;
+/*
+** This function is here to handle such thing : ("%*.p", -42, NULL).
+*/
 
-	x = 0;
-	va_start(arg, format);
-	put.pos = 0;
-	while (format[x])
+void	wtf_case(t_f *f, t_put *put)
+{
+	if (put->width)
+		put->width++;
+	if (f->minus)
 	{
-		if (format[x] == '%')
-		{
-			struc_init(&f);
-			put.len_perc = parser(&f, &format[x], arg);
-			if (!f.none)
-				parse_spec(&format[x + 1], &f, &put, arg);
-			x += put.len_perc + 1 - f.none;
-		}
-		else
-			ft_write(format[x], &put);
-		x++;
+		ft_write('0', put);
+		ft_write('x', put);
+		while (put->width--)
+			ft_write(' ', put);
 	}
-	va_end(arg);
-	return (put.pos);
+	if (!f->minus)
+	{
+		while (put->width--)
+			ft_write(' ', put);
+		ft_write('0', put);
+		ft_write('x', put);
+	}
 }

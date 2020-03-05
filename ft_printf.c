@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:02:35 by mkravetz          #+#    #+#             */
-/*   Updated: 2020/03/04 22:19:50 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:40:18 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,9 @@ int			ft_printf(const char *format, ...)
 		{
 			struc_init(&f);
 			put.len_perc = parser(&f, &format[x], arg);
-//			printf(" x is %zu\n", put.len_perc);
 			if (!f.none)
 				parse_spec(&format[x + 1], &f, &put, arg);
 			x += put.len_perc + 1 - f.none;
-//			printf("precision is [%d]\n", f.precision);
-//			printf("width is [%d]\n", f.width);
-//			printf("minus is [%d]\n", f.minus);
-//			printf("zero is [%d]\n", f.zero);
 		}
 		else
 			ft_write(format[x], &put);
@@ -44,10 +39,3 @@ int			ft_printf(const char *format, ...)
 	va_end(arg);
 	return (put.pos);
 }
-/*
-int main()
-{
-	ft_printf("oui%0d\n", 123);
-//	printf("oui%10tnon\n");
-}
-*/

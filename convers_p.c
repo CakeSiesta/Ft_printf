@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 15:33:28 by jherrald          #+#    #+#             */
-/*   Updated: 2020/03/04 14:36:20 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:35:49 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 static void		fill_put_p(t_f *f, t_put *put, unsigned long long int nb)
 {
 	init_put(put);
-	if (f->precision != -1 && f->precision > put->len - 2)
+	if (f->precision != -1 && f->precision > (int)put->len - 2)
 		put->precision = f->precision - put->len + 2;
-	if (f->width > put->len && f->width > f->precision)
+	if ((size_t)f->width > put->len && f->width > f->precision)
 	{
 		put->width = f->width - put->len - f->precision + 2;
 		if (f->precision == -1)
@@ -29,7 +29,7 @@ static void		fill_put_p(t_f *f, t_put *put, unsigned long long int nb)
 		put->width = f->width - 3;
 }
 
-static void		apply_minus(t_f *f, t_put *put, unsigned long long int nb)
+static void		apply_minus(t_put *put, unsigned long long int nb)
 {
 	ft_write('0', put);
 	ft_write('x', put);
@@ -40,7 +40,7 @@ static void		apply_minus(t_f *f, t_put *put, unsigned long long int nb)
 		ft_write(' ', put);
 }
 
-static void		apply_width(t_f *f, t_put *put, unsigned long long int nb)
+static void		apply_width(t_put *put, unsigned long long int nb)
 {
 	if (put->width > 0)
 	{
@@ -63,7 +63,7 @@ static void		apply_width(t_f *f, t_put *put, unsigned long long int nb)
 	ft_hexa_min(nb, put, 0);
 }
 
-static void		apply_precision(t_f *f, t_put *put, unsigned long long int nb)
+static void		apply_precision(t_put *put, unsigned long long int nb)
 {
 	ft_write('0', put);
 	ft_write('x', put);
@@ -80,11 +80,11 @@ void			convers_p(va_list arg, t_f *f, t_put *put)
 	put->len = ft_lenght_hex(nb) + 2;
 	fill_put_p(f, put, nb);
 	if (f->minus && (put->width || f->precision))
-		apply_minus(f, put, nb);
+		apply_minus(put, nb);
 	else if (!f->minus && put->width)
-		apply_width(f, put, nb);
+		apply_width(put, nb);
 	else if (put->precision && !put->width)
-		apply_precision(f, put, nb);
+		apply_precision(put, nb);
 	else
 	{
 		ft_write('0', put);

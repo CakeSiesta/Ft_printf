@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 22:06:59 by jherrald          #+#    #+#             */
-/*   Updated: 2020/03/04 16:30:44 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:36:20 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	apply_flag(t_f *f, t_put *put, unsigned int nb)
 	}
 }
 
-static void	apply_width(t_f *f, t_put *put, unsigned int nb)
+static void	apply_width(t_put *put, unsigned int nb)
 {
 	while (put->width--)
 		ft_write(' ', put);
@@ -40,7 +40,7 @@ static void	apply_width(t_f *f, t_put *put, unsigned int nb)
 	ft_write_unum(nb, put);
 }
 
-static void	apply_precision(t_f *f, t_put *put, unsigned int nb)
+static void	apply_precision(t_put *put, unsigned int nb)
 {
 	while (put->precision--)
 		ft_write('0', put);
@@ -77,9 +77,9 @@ void		convers_u(va_list arg, t_f *f, t_put *put)
 	if ((f->zero || f->minus) && (f->width || put->precision))
 		apply_flag(f, put, nb);
 	else if (!f->minus && !f->zero && put->width)
-		apply_width(f, put, nb);
+		apply_width(put, nb);
 	if (put->precision && !put->width && !f->zero && !f->minus)
-		apply_precision(f, put, nb);
+		apply_precision(put, nb);
 	else if ((f->zero || f->minus) && !f->width && f->precision == -1)
 		ft_write_unum(nb, put);
 }

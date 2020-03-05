@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:53:37 by jherrald          #+#    #+#             */
-/*   Updated: 2020/03/04 16:52:37 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:35:01 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	apply_flag(t_f *f, t_put *put, int nb)
 	}
 }
 
-static void	apply_width(t_f *f, t_put *put, int nb)
+static void	apply_width(t_put *put, int nb)
 {
 	while (put->width--)
 		ft_write(' ', put);
@@ -46,7 +46,7 @@ static void	apply_width(t_f *f, t_put *put, int nb)
 	ft_write_num(nb, put);
 }
 
-static void	apply_precision(t_f *f, t_put *put, int nb)
+static void	apply_precision(t_put *put, int nb)
 {
 	if (put->neg)
 		ft_write('-', put);
@@ -94,7 +94,7 @@ void		convers_d(va_list arg, t_f *f, t_put *put)
 	if (f->zero || f->minus)
 		apply_flag(f, put, nb);
 	else if (!f->minus && !f->zero && put->width)
-		apply_width(f, put, nb);
+		apply_width(put, nb);
 	if (put->precision && !put->width && !f->zero && !f->minus)
-		apply_precision(f, put, nb);
+		apply_precision(put, nb);
 }

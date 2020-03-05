@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 18:43:47 by jherrald          #+#    #+#             */
-/*   Updated: 2020/03/04 20:18:06 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:34:07 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	fill_put(t_f *f, t_put *put)
 {
-	if (f->precision != -1 && f->precision > put->len)
+	if (f->precision != -1 && f->precision > (int)put->len)
 		put->precision = f->precision - put->len;
-	if (f->width > f->precision && f->width > put->len)
+	if (f->width > f->precision && (size_t)f->width > put->len)
 		put->width = f->width - put->precision - put->neg - put->len;
 }
 
